@@ -1,0 +1,20 @@
+.hidden {
+  display: none;
+}
+
+.chosen {
+  border: red solid 1px;
+}
+
+.scroll {
+  overflow: scroll;
+  height: 75vh;
+}
+
+.container {
+  display: flex;
+}
+
+.item {
+  flex: 1;
+}
