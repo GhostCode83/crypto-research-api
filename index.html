@@ -1,6 +1,7 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
+  
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width">
     <title>repl.it</title>
@@ -11,10 +12,19 @@
     <h1>Cryptocurrency Research API</h1>
     <form action="" id="js-form">
       <h2>Get Cryptocurrency ID</h2>
-      <p>To get started, you will need to find a Cryptocurrency that you are interested in.</p>
-      <label>For a list of top the Cryptocurrencies and their ID's, press the enter button</label>
-      <Button type="submit">Enter</Button>
+      <section id='js-form-instructions'>
+        <p>To get started, you will need to find a Cryptocurrency that you are interested in.</p>
+        <label>For a list of top the Cryptocurrencies and their ID's, press the enter button</label>
+      </section>
+      <button type="submit" id="js-enter">Enter</button>
     </form>
+    
+    <section>
+      <form action="" id='js-restart' class="">
+        <button type="submit">Clear Results</button>
+      </form>
+      
+    </section>
 
     <section class='container'>
       <div id='js-list-container' class='hidden scroll '>
