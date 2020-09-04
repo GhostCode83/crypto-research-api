@@ -28,7 +28,7 @@ function displayCryptoList(cryptoIdData) {
   $('#js-list-container').removeClass('hidden')
 
 
-  for (let i = 0; i < 5; i++) {
+  for (let i = 0; i < 20; i++) {
     $('#js-display-id-list').append(`<li class=''>
       <h3 id=${cryptoIdData[i].name}>${cryptoIdData[i].name} News</h3>
       <p id=${cryptoIdData[i].id} class=''> ID: ${cryptoIdData[i].id}</p>
@@ -121,6 +121,8 @@ function restart(){
   $('#js-list-container').addClass('hidden');
   $('#js-display-news').empty();
   $('#js-news-container').addClass('hidden');
+  $('#js-chosen-currency-list').empty();
+  $('#js-chosen-currency-container').addClass('hidden');
   })
 }
 
