@@ -1,20 +1,137 @@
+*{
+  color: #DEF0F7;
+
+}
+
+header {
+  background-image: url(https://user-images.githubusercontent.com/58892815/93025075-09363300-f5c9-11ea-9d95-b3408e5605d9.jpg);
+  height: 20vh;
+}
+
+p.hidden {
+  display: inline;
+}
+
+
+p, button, h3, h2, li, a, label{
+  color: #0A4448;
+  font-family: 'Roboto', sans-serif;
+
+}
+
+form > button {
+  display: inline-block;
+}
+
+h1 {
+  text-align: center;
+  color: #def0f7;
+  padding-top: 25px;
+  font-size: 40px;
+  font-family: 'Kufam', cursive;
+
+}
+a{
+  color: #08c45d;
+
+}
 .hidden {
   display: none;
 }
 
+button {
+  background-color:#0A4448;
+  color: #DEF0F7;
+	border-radius:5px;
+	border:none;
+	display: inline-block;
+	cursor:pointer;
+}
+
+button:hover {
+  background-color:#5cbf2a;
+  color: #0A4448;
+}
+.list-container {
+  width: 250px;
+}
 .chosen {
   border: red solid 1px;
 }
 
 .scroll {
-  overflow: scroll;
-  height: 75vh;
+  width:300px; 
+  overflow-y:scroll; 
+  position:relative;
+  height: 70vh;
 }
 
+.news-container .scroll{
+  width:300px; 
+}
+.list-container {
+  margin-right: 50px;
+}
 .container {
   display: flex;
+  flex-direction: column;
 }
 
 .item {
   flex: 1;
+  height: auto;
+  width: 300px;
+
 }
+
+ul {
+  list-style: none;
+}
+
+@media only screen and (min-width: 585px){
+  h1 {
+    padding-top: 50px ;
+    font-size: 6vw;
+  }
+}
+@media only screen and (min-width: 900px){
+  .container{
+    flex-direction: row;
+  }
+  p.hidden {
+    display: none;
+  }
+  h1 {
+    font-size: 50px;
+    padding-top: 40px
+  }
+}
+
+@media only screen and (min-width: 1200px){
+  h1 {
+    font-size: 75px;
+    padding-top: 20px;
+  }
+}
+
+/*
+
+
+
+@media only screen and (max-width: 600px){
+//Big smartphones [426px -> 600px]
+}
+@media only screen and (max-width: 425px){
+//Small smartphones [325px -> 425px]
+}
+
+color: #A6B6C9;
+
+color: #DEF0F7;
+
+color: #0A4448;
+
+color: #15e6cd;
+
+color: #0cf574;
+*/

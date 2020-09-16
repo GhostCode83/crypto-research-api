@@ -5,13 +5,17 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width">
     <title>repl.it</title>
+    <link href="https://fonts.googleapis.com/css2?family=Kufam:wght@500&family=Roboto&display=swap" rel="stylesheet">
     <link href="style.css" rel="stylesheet" type="text/css" />
   </head>
 
   <body>
-    <h1>Cryptocurrency Research API</h1>
+    <header>
+
+      <h1>Cryptocurrency Research API</h1>
+    </header>
     <form action="" id="js-form">
-      <h2>Get Cryptocurrency ID</h2>
+      <h2>Get Cryptocurrency News and Current Data</h2>
       <section id='js-form-instructions'>
         <p>To get started, you will need to find a Cryptocurrency that you are interested in.</p>
         <label>For a list of top the Cryptocurrencies and their ID's, press the enter button</label>
@@ -23,25 +27,25 @@
       <form action="" id='js-restart' class="">
         <button type="submit">Clear Results</button>
       </form>
-      
     </section>
 
     <section class='container'>
-      <div id='js-list-container' class='hidden scroll '>
+      <div id='js-list-container' class='hidden  item list-container'>
         <h2>List of Top Cryptocurrencies:</h2>
         <p>Click on a cryptocurrency name for news and the ID for the OHLC:</p>
-        <ul id='js-display-id-list' class='item' >
+        <p class='hidden'>(News and OHLC display below)</p>
+        <ul id='js-display-id-list' class='scroll' >
         </ul>
       </div>
 
-      <div id='js-chosen-currency-container' class='hidden'>
+      <div id='js-chosen-currency-container' class='hidden item'>
         <h2>OHLC for last full day</h2>
-        <ul id='js-chosen-currency-list'  ></ul>
+        <ul id='js-chosen-currency-list' class='scroll' ></ul>
       </div>
 
-      <div id='js-news-container'class='hidden scroll '>
+      <div id='js-news-container'class=' news-container hidden item  '>
         <h2 id='js-news-heading'>News Articles</h2>
-        <ul id='js-display-news' class='item'>
+        <ul id='js-display-news' class='scroll display-news'>
         </ul>
       </div>
     </section>
