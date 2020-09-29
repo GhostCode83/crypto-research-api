@@ -1,6 +1,5 @@
 *{
   color: #DEF0F7;
-
 }
 
 header {
@@ -12,13 +11,22 @@ p.hidden {
   display: inline;
 }
 
-
-p, button, h3, h2, li, a, label{
+.centered-text{
+  text-align: center;
+}
+p, button, h3, h2, li, a, label, h4{
   color: #0A4448;
   font-family: 'Roboto', sans-serif;
-
 }
 
+.crypto-option:hover {
+  border: solid 1px #5cbf2a;
+  background-color: #1bbac5;
+}
+
+.crypto-option:hover h4 {
+  color: #def0f7
+}
 form > button {
   display: inline-block;
 }
@@ -29,12 +37,16 @@ h1 {
   padding-top: 25px;
   font-size: 40px;
   font-family: 'Kufam', cursive;
-
 }
+
+h4{
+  font-family: 'Kufam', cursive;
+}
+
 a{
   color: #08c45d;
-
 }
+
 .hidden {
   display: none;
 }
@@ -48,33 +60,27 @@ button {
 	cursor:pointer;
 }
 
-button:hover {
-  background-color:#5cbf2a;
-  color: #0A4448;
-}
 .list-container {
-  width: 250px;
-}
-.chosen {
-  border: red solid 1px;
+  width: 250px;  
+  margin-right: 50px;
 }
 
 .scroll {
-  width:300px; 
+  width:200px; 
   overflow-y:scroll; 
   position:relative;
-  height: 70vh;
+  height: 30vh;
 }
 
 .news-container .scroll{
   width:300px; 
+  overflow-x: hidden;
+
 }
-.list-container {
-  margin-right: 50px;
-}
+
 .container {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
 }
 
 .item {
@@ -83,7 +89,6 @@ button:hover {
   width: 300px;
 
 }
-
 ul {
   list-style: none;
 }
@@ -94,6 +99,7 @@ ul {
     font-size: 6vw;
   }
 }
+
 @media only screen and (min-width: 900px){
   .container{
     flex-direction: row;
@@ -111,6 +117,45 @@ ul {
   h1 {
     font-size: 75px;
     padding-top: 20px;
+  }  
+
+
+
+  .horizontal-scroll {
+      display: flex;
+      flex-wrap: nowrap;
+      overflow-x: auto;
+      width:90vw; 
+      height: 15vh;
+  }
+
+ .horizontal-scroll li {
+    flex: 0 0 auto;
+  }
+
+  .container {
+    display: inline;
+  }
+
+  .details {
+    width: 90vw;
+    overflow-x: 100vw;
+  }
+
+  .news-container .details {
+    width: 1100px;
+  }
+
+  li {
+    display: inline-block; 
+    margin: 5px 10px 5px 0px;
+    padding-left: 10px;
+    padding-right: 10px;
+    
+  }
+  
+  .list-container {
+    width: 80vw;
   }
 }
 
