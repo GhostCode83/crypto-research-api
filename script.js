@@ -1,4 +1,3 @@
-//fetch for the list of cryptocurrency Names and ID's
 function getList() {
   let idUrl = `https://api.coinpaprika.com/v1/coins`
   fetch(idUrl)
@@ -15,12 +14,12 @@ function getNews(data) {
     .catch(err => console.log(err))
 }
 
-function getMoreCrypto(data) {
+function getOHLC(data) {
   console.log(data)
   let idUrl = `https://api.coinpaprika.com/v1/coins/${data}/ohlcv/latest/`
   fetch(idUrl)
     .then(response => response.json())
-    .then(responseJson => displayIdDetails(responseJson))
+    .then(responseJson => displayOHLC(responseJson))
     .catch(err => console.error(err))
 }
 
@@ -57,7 +56,7 @@ function displayNews(data) {
 }
 
 
-function displayIdDetails(data) {
+function displayOHLC(data) {
   $('#js-news-container').addClass('hidden')
   $('#js-display-news').empty()
   $('#js-chosen-currency-list').empty()
@@ -66,19 +65,18 @@ function displayIdDetails(data) {
   let high = data[0].high.toLocaleString('en-US', { style: 'currency', currency: 'USD' })
   let low = data[0].low.toLocaleString('en-US', { style: 'currency', currency: 'USD' })
   let close = data[0].close.toLocaleString('en-US', { style: 'currency', currency: 'USD' })
-  let display = `<ul>
-    <li>open: ${open}</li>
+  let display = `
+    <li class='centered-text'>open: ${open}</li>
     <li>high: ${high}</li>
     <li>low: ${low}</li>
     <li>close: ${close}</li>
-    </ul>`;
+    `;
 
   $('#js-chosen-currency-container').removeClass('hidden');
   $('#js-chosen-currency-list').append(display)
 
 }
 
-//consider making these forms, there may be more options with each one of these as buttons.  might even use fieldsets
 function watchCurrencyNameClick(event) {
   $('#js-display-id-list').on('click', `.news-item`, function (event) {
     let cryptoName = event.target.id
@@ -90,12 +88,11 @@ function watchCurrencyNameClick(event) {
 function watchCurrencyIdClick(event) {
   $('#js-display-id-list').on('click', `li p`, function (event) {
     let cryptoId = event.target.id
-    getMoreCrypto(cryptoId)
+    getOHLC(cryptoId)
     $('#js-chosen-currency-list').empty()
   })
 }
 
-//work on chose feature -- consider changing to css for desired look
 function watchChosenCurrency(event) {
   $('#js-display-id-list').on('click', 'li', function (event) {
     console.log('hello', event)
@@ -103,22 +100,10 @@ function watchChosenCurrency(event) {
   })
 }
 
-//function watchForm() {
-//  $('#js-form').on('submit', function (event) {
-//    $('#js-display-id-list').empty();
-//    $('#js-form-instructions').addClass('hidden')
-//    event.preventDefault();
-//    getList()
-//    restart()
-//  })
-//}
-
 function restart() {
   $('#js-restart').on('click', function (event) {
     event.preventDefault();
-    // $('#js-form-instructions').removeClass('hidden')
-    // $('#js-display-id-list').empty();
-    // $('#js-list-container').addClass('hidden');
+
     $('#js-display-news').empty();
     $('#js-news-container').addClass('hidden');
     $('#js-chosen-currency-list').empty();
