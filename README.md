@@ -1,6 +1,6 @@
 Crypto Search
 
-Link: https://ghostcode83.github.io/crypto-research-api/
+Link: https://ghostcode83.github.io/crypto-search/
 
 ![Screen Shot 2020-09-29 at 2 08 57 PM](https://user-images.githubusercontent.com/58892815/94598758-6f73b480-025d-11eb-8533-71168083a068.png)
 
