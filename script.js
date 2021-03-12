@@ -78,12 +78,10 @@ function displayOHLC(data) {
   $('#js-news-container').addClass('hidden')
   $('#js-display-news').empty()
   $('#js-chosen-currency-list').empty()
-  console.log(data)
   let open = data[0].open.toLocaleString('en-US', { style: 'currency', currency: 'USD' })
   let high = data[0].high.toLocaleString('en-US', { style: 'currency', currency: 'USD' })
   let low = data[0].low.toLocaleString('en-US', { style: 'currency', currency: 'USD' })
   let close = data[0].close.toLocaleString('en-US', { style: 'currency', currency: 'USD' })
-
   let display = `
     <li class='centered-text'>open: ${open}</li>
     <li>high: ${high}</li>
@@ -99,7 +97,6 @@ function displayOHLC(data) {
 function watchNewsClick(event) {
   $('#js-display-id-list').on('click', `.news-item`, function (event) {
     let cryptoName = event.target.id
-    console.log(cryptoName)
     getNews(cryptoName)
   })
 }
@@ -107,7 +104,6 @@ function watchNewsClick(event) {
 function watchOHLCClick(event) {
   $('#js-display-id-list').on('click', `.cypto-option-ohlc`, function (event) {
     let cryptoId = event.target.id
-    console.log(cryptoId)
     getOHLC(cryptoId)
     $('#js-chosen-currency-list').empty()
   })
@@ -115,7 +111,6 @@ function watchOHLCClick(event) {
 
 function watchChosenCurrency(event) {
   $('#js-display-id-list').on('click', 'li', function (event) {
-    console.log('hello', event)
     event.target.toggleClass('chosen')
   })
 }
