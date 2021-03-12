@@ -7,18 +7,32 @@ function getList() {
 }
 
 function getNews(data) {
-  fetch(`https://api.nytimes.com/svc/search/v2/articlesearch.json?q=${data}-&api-key=gEpOPJ5s2vXbj7ruaA3jGrMEYkZGyj8J`
-  )
-    .then(response => response.json())
+  fetch(`https://api.nytimes.com/svc/search/v2/articlesearch.json?q=${data}-&api-key=gEpOPJ5s2vXbj7ruaA3jGrMEYkZGyj8J`)
+    .then(response => {
+      if (!response.ok) {
+        return response.json.then(error => {
+          console.log(error)
+          Promise.reject(error)
+        })
+      }
+      return response.json()
+    })
     .then(responseJson => { displayNews(responseJson) })
     .catch(err => console.log(err))
 }
 
 function getOHLC(data) {
-  console.log(data)
-  let idUrl = `https://api.coinpaprika.com/v1/coins/${data}/ohlcv/latest/`
+  let idUrl = `https://api.coinpaprika.com/v1/coins/${data}/ohlcv/today/`
   fetch(idUrl)
-    .then(response => response.json())
+    .then(response => {
+      if (!response.ok) {
+        return response.json.then(error => {
+          console.log(error)
+          Promise.reject(error)
+        })
+      }
+      return response.json()
+    })
     .then(responseJson => displayOHLC(responseJson))
     .catch(err => console.error(err))
 }
@@ -30,29 +44,28 @@ function displayCryptoList(cryptoIdData) {
     $('#js-display-id-list').append(`<li class='crypto-option'>
       <h4 class='cypto-option-news' >${cryptoIdData[i].name} </h4>
       <div>
-      <a  class='cypto-option-ohlc' id=${cryptoIdData[i].id} class=''> OHLC</a>
+        <a  class='cypto-option-ohlc' id=${cryptoIdData[i].id} class=''> OHLC</a>
       </div>
-            <div>
-
-      <a id=${cryptoIdData[i].name} class='news-item'>News</a>
-            </div>
-
+      <div>
+        <a id=${cryptoIdData[i].name} class='news-item'>News</a>
+      </div>
       <div class='hidden js-crypto-pocket'></div>
     </li>`)
   }
-  watchCurrencyNameClick()
-  watchCurrencyIdClick()
+  watchNewsClick()
+  watchOHLCClick()
 }
 
 function displayNews(data) {
   $('#js-display-news').empty()
   $('#js-chosen-currency-list').empty()
   $('#js-chosen-currency-container').addClass('hidden')
-
+  let date
   for (let i = 0; i < data.response.docs.length; i++) {
+    date = new Date(data.response.docs[i].pub_date)
     $('#js-display-news').append(`<li class=''>
       <h4>${data.response.docs[i].headline.main}</h4>
-      <p>${data.response.docs[i].pub_date}</p> 
+      <p>${date}</p> 
       <p>${data.response.docs[i].snippet}</p>
       <p><a href="${data.response.docs[i].web_url}" target="_blank">${data.response.docs[i].web_url}</a></p>
       <div class='hidden'></div>
@@ -70,6 +83,7 @@ function displayOHLC(data) {
   let high = data[0].high.toLocaleString('en-US', { style: 'currency', currency: 'USD' })
   let low = data[0].low.toLocaleString('en-US', { style: 'currency', currency: 'USD' })
   let close = data[0].close.toLocaleString('en-US', { style: 'currency', currency: 'USD' })
+
   let display = `
     <li class='centered-text'>open: ${open}</li>
     <li>high: ${high}</li>
@@ -82,17 +96,18 @@ function displayOHLC(data) {
 
 }
 
-function watchCurrencyNameClick(event) {
+function watchNewsClick(event) {
   $('#js-display-id-list').on('click', `.news-item`, function (event) {
     let cryptoName = event.target.id
+    console.log(cryptoName)
     getNews(cryptoName)
-
   })
 }
 
-function watchCurrencyIdClick(event) {
-  $('#js-display-id-list').on('click', `li p`, function (event) {
+function watchOHLCClick(event) {
+  $('#js-display-id-list').on('click', `.cypto-option-ohlc`, function (event) {
     let cryptoId = event.target.id
+    console.log(cryptoId)
     getOHLC(cryptoId)
     $('#js-chosen-currency-list').empty()
   })
