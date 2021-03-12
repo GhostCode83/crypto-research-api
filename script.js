@@ -29,8 +29,14 @@ function displayCryptoList(cryptoIdData) {
   for (let i = 0; i < 20; i++) {
     $('#js-display-id-list').append(`<li class='crypto-option'>
       <h4 class='cypto-option-news' >${cryptoIdData[i].name} </h4>
-      <p class='cypto-option-ohlc' id=${cryptoIdData[i].id} class=''> OHLC</p>
-      <p id=${cryptoIdData[i].name} class='news-item'>News</p>
+      <div>
+      <a  class='cypto-option-ohlc' id=${cryptoIdData[i].id} class=''> OHLC</a>
+      </div>
+            <div>
+
+      <a id=${cryptoIdData[i].name} class='news-item'>News</a>
+            </div>
+
       <div class='hidden js-crypto-pocket'></div>
     </li>`)
   }
@@ -54,7 +60,6 @@ function displayNews(data) {
   }
   $('#js-news-container').removeClass('hidden')
 }
-
 
 function displayOHLC(data) {
   $('#js-news-container').addClass('hidden')

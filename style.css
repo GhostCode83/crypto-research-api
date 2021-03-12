@@ -59,6 +59,7 @@ a:visited {
 
 a:hover {
   color: #1BBAC5;
+  cursor: pointer;
 }
 
 a:active {
@@ -75,7 +76,7 @@ p.hidden {
 
 .crypto-option:hover {
   border: solid 1px #5cbf2a;
-  background-color: #1bbac5;
+  background-color: #b5dfe2;
 }
 
 .crypto-option:hover p {
